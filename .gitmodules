@@ -1,21 +1,21 @@
 [submodule "bartlby-core"]
 	path = bartlby-core
-	url = https://github.com/hjanuschka/bartlby-core.git
+	url = https://github.com/Bartlby/bartlby-core.git
 [submodule "bartlby-php"]
 	path = bartlby-php
-	url = https://github.com/hjanuschka/bartlby-php.git
+	url = https://github.com/Bartlby/bartlby-php.git
 [submodule "bartlby-extensions"]
 	path = bartlby-extensions
-	url = https://github.com/hjanuschka/bartlby-extensions.git
+	url = https://github.com/Bartlby/bartlby-extensions.git
 [submodule "bartlby-chrome"]
 	path = bartlby-chrome
-	url = https://github.com/hjanuschka/bartlby-chrome.git
+	url = https://github.com/Bartlby/bartlby-chrome.git
 [submodule "bartlby-ui"]
 	path = bartlby-ui
-	url = https://github.com/hjanuschka/bartlby-ui.git
+	url = https://github.com/Bartlby/bartlby-ui.git
 [submodule "bartlby-agent"]
 	path = bartlby-agent
-	url = https://github.com/hjanuschka/bartlby-agent.git
+	url = https://github.com/Bartlby/bartlby-agent.git
 [submodule "bartlby-plugins"]
 	path = bartlby-plugins
-	url = https://github.com/hjanuschka/bartlby-plugins.git
+	url = https://github.com/Bartlby/bartlby-plugins.git
