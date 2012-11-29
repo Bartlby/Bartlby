@@ -1,0 +1,3 @@
+[submodule "bartlby-core"]
+	path = bartlby-core
+	url = git@github.com:hjanuschka/bartlby-core.git
