@@ -1,9 +1,6 @@
 [submodule "bartlby-core"]
 	path = bartlby-core
 	url = https://github.com/Bartlby/bartlby-core.git
-[submodule "bartlby-php"]
-	path = bartlby-php
-	url = https://github.com/Bartlby/bartlby-php.git
 [submodule "bartlby-extensions"]
 	path = bartlby-extensions
 	url = https://github.com/Bartlby/bartlby-extensions.git
