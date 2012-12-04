@@ -16,3 +16,6 @@
 [submodule "bartlby-plugins"]
 	path = bartlby-plugins
 	url = https://github.com/Bartlby/bartlby-plugins.git
+[submodule "bartlby-php"]
+	path = bartlby-php
+	url = https://github.com/Bartlby/bartlby-php.git
