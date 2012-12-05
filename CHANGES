@@ -1,3 +1,4 @@
+	+ added server/service groups 
 	+ JSON output of services list
 		+ used in chrome-extension	
 	+ core: added trigger push.sh - to send push notifications to iphone and android 
