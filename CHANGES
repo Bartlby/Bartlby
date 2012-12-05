@@ -1,3 +1,5 @@
+	+ core: reworked the scheduler should save a lot a cpu now
+	+ php: added downtime support for groups
 	+ added server/service groups 
 	+ JSON output of services list
 		+ used in chrome-extension	
