@@ -7,6 +7,26 @@
 
 NOTE: backup config files ( /usr/local/bartlby/etc/bartlby.cfg, /your/htdocs/bartlby-ui/ui-extra.conf)
 
+# upgrading from 1.3.1 to 1.4.0
+
+CREATE TABLE `servicegroups` (
+  `servicegroup_id` int(12) NOT NULL auto_increment,
+  `servicegroup_name` varchar(255) NOT NULL default '',
+  `servicegroup_notify` int(2) NOT NULL default '0',
+  `servicegroup_active` int(2) NOT NULL default '1',
+  `servicegroup_members` text NOT NULL default '',
+  PRIMARY KEY  (`servicegroup_id`)
+)  ;
+CREATE TABLE `servergroups` (
+  `servergroup_id` int(12) NOT NULL auto_increment,
+  `servergroup_name` varchar(255) NOT NULL default '',
+  `servergroup_notify` int(2) NOT NULL default '0',
+  `servergroup_active` int(2) NOT NULL default '1',
+  `servergroup_members` text NOT NULL default '',
+  PRIMARY KEY  (`servergroup_id`)
+)  ;
+
+
 
 # upgrading from 1.3.0 to 1.3.1
 ALTER TABLE `services` ADD `renotify_interval` int default 0;
