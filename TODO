@@ -1,1 +1,3 @@
 * ui: finish downtime implementation (groups)^
+	DONE add/modify
+	OPEN: display in group_detail (ui/php)
