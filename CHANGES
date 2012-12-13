@@ -1,3 +1,4 @@
+	+ trigger_msg variables have to end with $ e.g.: $SERVER$
 	+ agent: supports , and % for more common plugin support (e.g.: check_swap, check_load, check_disk)
 	+ core: supports nagios plugin performance data
 	+ ui/extensions: autodiscoveraddons now supports pnp4nagios graphs
