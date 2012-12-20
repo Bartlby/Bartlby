@@ -1,4 +1,4 @@
-see for config and installation: http://wiki.bartlby.org/dokuwiki/
+Documentation: https://github.com/Bartlby/Bartlby/wiki/DOC
 
 
 # Contribute
