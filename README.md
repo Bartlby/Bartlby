@@ -1,4 +1,4 @@
-Documentation: https://github.com/Bartlby/Bartlby/wiki/DOC
+Documentation: https://github.com/Bartlby/Bartlby/wiki/Documentation
 
 
 # Contribute
