@@ -1,4 +1,10 @@
-	+ trigger_msg variables have to end with $ e.g.: $SERVER$
+	+ core: automake now works for doing make dist
+	+ core: replaced most of the calls to sprintf to asprintf 
+	+ core: fixed a buffer overflow on call of perf handler
+	+ core: added CI (travis-ci)
+	+ core: fixed ubuntu c99 compile warnings
+	+ core: local checks discard STDERR now
+	+ core: trigger_msg variables have to end with $ e.g.: $SERVER$
 	+ agent: supports , and % for more common plugin support (e.g.: check_swap, check_load, check_disk)
 	+ core: supports nagios plugin performance data
 	+ ui/extensions: autodiscoveraddons now supports pnp4nagios graphs

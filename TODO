@@ -1,3 +1,2 @@
-* ui: finish downtime implementation (groups)^
-	DONE add/modify
-	OPEN: display in group_detail (ui/php)
+* add alive indicator (service based) to server/servicegroup
+* update github documentation -> port old dokuwiki and update information
