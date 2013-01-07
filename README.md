@@ -13,5 +13,7 @@ Report in the corresponding repo using github
 pull the master branch for the latest stable version
 if you want to use the development branch
 
-git checkout development/stage and go from there
+`git checkout development/stage`
+
+and go from there
 
