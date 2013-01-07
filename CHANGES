@@ -1,3 +1,7 @@
+	+ ui: group alife marker functions
+	+ php: group alife marker functions
+	+ core: alife marker is set to dead if service is disabled
+	+ core: groups support alife marker
 	+ core: automake now works for doing make dist
 	+ core: replaced most of the calls to sprintf to asprintf 
 	+ core: fixed a buffer overflow on call of perf handler
