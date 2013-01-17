@@ -1,3 +1,10 @@
+	+ core/ui/php 
+		groups, server and service object now support to select triggers wich should fired if no value all will be fired
+	+ core/ui/php - added check-type:SSH
+		run checks via SSH connection
+		specify privatekey,passphrase, username - on server object
+		only RSA keys support
+		plugin will be executed at e.g.: ~/bartlby_plugins/bartlby_load -c 10 -p
 	+ core/php/ui: added eventhandlers - if check goes critical - an event handler is called on the remote machine from the plugins dir
 	  event_<PLUGIN_NAME>.sh plugin-params state retain_count
 	  only if enabled in ui (fires events)

@@ -1,3 +1,2 @@
-
-- [ ] groups let the alife indicator be removable
+- [ ] add "enabled_triggers" for groups and server object
 - [ ] update github documentation -> port old dokuwiki and update information
