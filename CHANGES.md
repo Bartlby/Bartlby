@@ -1,3 +1,12 @@
+	+ ui - group selector has been rewriten much more useable on large networks now
+	+ ui 
+		new reporting design
+		step and donut graph
+		fits to new ui layout
+	+ core/servergroups
+		if a servergroup exists and is named "DEFAULT"
+		all servers are added to this group wich are group-less
+		DEFAULT group is hidden if there is not any server wich is group-less
 	+ core/ui/php 
 		groups, server and service object now support to select triggers wich should fired if no value all will be fired
 	+ core/ui/php - added check-type:SSH
