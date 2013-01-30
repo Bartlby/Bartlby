@@ -33,7 +33,7 @@ alter table services add (enabled_triggers varchar(512) NOT NULL default '');
 alter table servicegroups add (enabled_triggers varchar(512) NOT NULL default '');
 alter table servergroups add (enabled_triggers varchar(512) NOT NULL default '');
 alter table servers add (enabled_triggers varchar(512) NOT NULL default '');
-
+alter table services add (service_snmp_textmatch varchar(1024) NOT NULL default '');
 
 # upgrading from 1.3.0 to 1.3.1
 ALTER TABLE `services` ADD `renotify_interval` int default 0;

@@ -1,3 +1,5 @@
+	+ core - more flexible snmp integration
+		support for all types using strcmp strstr
 	+ ui - group selector has been rewriten much more useable on large networks now
 	+ ui 
 		new reporting design
