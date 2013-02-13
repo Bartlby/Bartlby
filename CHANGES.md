@@ -1,3 +1,16 @@
+	+ core - generic perf handler added
+	+ core/php - SHM reorganised 
+		you need to recompile extensions, php and core!!!!
+		saves up to 90% of the SHM Size :)
+	+ portier - ipv6 support
+	+ agent - cmd tool for portier supports ipv6
+	+ agentv2 - support ipv6
+	+ active - agent - supports ipv6
+	+ core/ui - support for managing multi instances
+			running on the same machine
+			running on remote machines - in read only and read write mode
+			see config.php (UI) and https://github.com/Bartlby/Bartlby/tree/master/multi_instances_HA
+			a little script to push config to remote and pull status from it
 	+ core - more flexible snmp integration
 		support for all types using strcmp strstr
 	+ ui - group selector has been rewriten much more useable on large networks now

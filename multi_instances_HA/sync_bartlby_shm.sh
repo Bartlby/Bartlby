@@ -1,7 +1,26 @@
 #!/bin/bash
 
+
+############ BARTLBY CONF
+#data_library=/opt/bartlby/lib/mysql.so
+#max_concurent_checks=6
+#max_load=0
+#shm_key=/opt/bartlby-1
+#shm_size=15
+#logfile=/opt/bartlby-1/var/log/bartlby  
+#### TRIGGERS FROM MASTER
+#trigger_dir=/opt/bartlby/trigger
+#agent_plugin_dir=/opt/bartlby-agent/plugins
+#
+#mysql_host=localhost
+#mysql_user=root
+#mysql_pw=volLKorn8BROt4
+#mysql_db=bartlby_second
+###########################################
+
 ##### BASIC
 LOCAL_ARCH=$(uname -m);
+
 MASTE_UI_HTDOCS=/var/www/htdocs/bartlby.januschka.com/bartlby-ui/
 
 ############ SHM
@@ -15,6 +34,11 @@ LOCAL_BARTLBY_BIN_PATH=/storage/SF.NET/BARTLBY/GIT/bartlby-core/
 
 REMOTE_BARTLBY_CONF="/storage/SF.NET/BARTLBY/GIT/bartlby-core/BARTLBY.local";
 
+
+LOCAL_EXPECTCORE=$($LOCAL_BARTLBY_BIN_PATH/bartlby_shmt expectcore)
+REMOTE_EXPECTCORE=$(ssh -i $KEY_TO_USE $REMOTE_HOST -C "$REMOTE_BARTLBY_BIN_PATH/bartlby_shmt expectcore")
+
+
 ##### CONFIG
 LOCAL_MYSQL_CONN_STR=" -u root --password=volLKorn8BROt4 bartlby_second"
 REMOTE_MYSQL_CONN_STR=" -u root --password=volLKorn8BROt4 bartlbydev"
@@ -25,14 +49,19 @@ ADD_FOLDERS="/opt/bartlby/:/opt/bartlby-$LOCAL_IDX/ /var/www/htdocs/bartlby.janu
 
 REMOTE_ARCH=$(ssh -i $KEY_TO_USE $REMOTE_HOST -C "uname -m");
 
-
+if [ "$LOCAL_EXPECTCORE" != "$REMOTE_EXPECTCORE" ];
+then
+	echo "CORE VERSION MISMATCH";
+	exit;
+	
+fi
 if [ "$LOCAL_ARCH" != $REMOTE_ARCH ];
 then
 	echo "ARCH FAIL $LOCAL_ARCH , $REMOTE_ARCH";
 	exit;
 fi;
 echo "Arch: $REMOTE_ARCH";
-
+echo "EXPECT CORE: $LOCAL_EXPECTCORE";
 
 TEMP_DIR=/tmp/bartlby_sync.$$
 mkdir $TEMP_DIR;
@@ -56,17 +85,7 @@ then
 	echo "CONFIG pushed to REMOTE";
 fi;
 
-if [ "x$1" = "xdiv" ];
-then
 
-	for x in $ADD_FOLDERS;
-	do
-		LFOLD=$(echo $x|awk -F":" '{print $1}');
-		RFOLD=$(echo $x|awk -F":" '{print $2}');
-		rsync  -e "ssh -i $KEY_TO_USE" -av $REMOTE_HOST:$LFOLD $RFOLD
-	done;
-
-fi
 
 #DUMP REMOTE SITE
 
@@ -99,38 +118,24 @@ fi;
 $LOCAL_BARTLBY_BIN_PATH/bartlby_shmt replay $LOCAL_SHM_KEY $TEMP_DIR/shm.dump $SI
 
 
+
+if [ "x$1" = "xdiv" ];
+then
+
+	for x in $ADD_FOLDERS;
+	do
+		LFOLD=$(echo $x|awk -F":" '{print $1}');
+		RFOLD=$(echo $x|awk -F":" '{print $2}');
+		rsync  -e "ssh -i $KEY_TO_USE" -av -u $REMOTE_HOST:$LFOLD $RFOLD
+	done;
+
+fi
+
+rm -vfr "$TEMP_DIR";
+ssh -i $KEY_TO_USE $REMOTE_HOST -C "rm -vfr $TEMP_DIR";
+
 #update sync time
 date +%s > $MASTE_UI_HTDOCS/last_sync-$LOCAL_IDX
 exit;
 #
 
-
-
-cd /root
-
-#first of all suck in config that has been made from remote
-
-
-
-#dump local SHM
-rm -vf 1.dmp.gz
-rm -vf 1.dmp
-/storage/SF.NET/BARTLBY/GIT/bartlby-core/bartlby_shmt dump /opt/bartlby 1.dmp
-
-SI=$(stat -t 1.dmp|awk '{print $2}');
-SI=$[SI+20];
-
-
-
-#scp to remote
-gzip 1.dmp
-scp  -i /storage/SF.NET/BARTLBY/priv 1.dmp.gz root@januschka.com:/root/1.dmp.gz
-
-#replay shm
-
-
-ssh -i /storage/SF.NET/BARTLBY/priv  root@januschka.com -C "rm /root/1.dmp"
-ssh -i /storage/SF.NET/BARTLBY/priv  root@januschka.com -C "cd /root;gunzip /root/1.dmp.gz"
-ssh -i /storage/SF.NET/BARTLBY/priv  root@januschka.com -C " /storage/SF.NET/BARTLBY/GIT/bartlby-core/bartlby_shmt replay /opt/bartlby-second /root/1.dmp $SI"
-
-ssh -i /storage/SF.NET/BARTLBY/priv  root@januschka.com -C "date +%s > /var/www/htdocs/bartlby.januschka.com/bartlby-ui/last_sync-1"

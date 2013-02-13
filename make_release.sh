@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins";
+MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui";
 BS=/storage/SF.NET/BARTLBY/GIT/
 
 if [ "x$1" = "x" ];
