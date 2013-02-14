@@ -1,3 +1,4 @@
+	+ added a little SH script to in-place upgrade the susestudio appliance
 	+ core - generic perf handler added
 	+ core/php - SHM reorganised 
 		you need to recompile extensions, php and core!!!!

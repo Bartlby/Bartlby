@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui";
+MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui bartlby-extensions";
 BS=/storage/SF.NET/BARTLBY/GIT/
 
 if [ "x$1" = "x" ];
@@ -21,7 +21,7 @@ do
 	git checkout master
 	git pull
 	#UPDATE VERSION 
-	perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1, $VE ,\$3\)/g" configure.ac && grep AC_INIT configure.ac
+	perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
 	git commit -m "Release $VE" -a;
 	git tag $VE
 	git push
