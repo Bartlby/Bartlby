@@ -31,7 +31,8 @@ do
 done
 
 #update submodules to master~head
-$BS/Bartlby/update_repository_with_latest_module_commits.sh
+cd $BS/Bartlby/
+./update_repository_with_latest_module_commits.sh
 rm -vfr /tmp/bartlby-$VE
 mkdir /tmp/bartlby-$VE
 cd /tmp/bartlby-$VE
