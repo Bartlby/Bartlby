@@ -1,3 +1,8 @@
+###########################
+# RELEASE 1.4.5 16.02.2013
+###########################
+	+ agent - added debian/ folder to generate debian package use git-buildpackage from within the agend source dir
+		you all get a .deb file in ../
 	+ added a little SH script to in-place upgrade the susestudio appliance
 	+ core - generic perf handler added
 	+ core/php - SHM reorganised 

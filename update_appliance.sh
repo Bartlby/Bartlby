@@ -165,11 +165,35 @@ then
 	
 fi;
 
+echo -n "Update Extensions [y/n]";
+read stopit;
+if [ "$stopit" != "n" ];
+then
+	### update modules
+	cd /usr/local/src/bartlby-extensions
+	git stash
+	./autogen.sh
+	echo -n "Wich Branch of Extensions (Default: master):";
+	read stopit;
+		if [ "x$stopit" = "x" ];
+		then
+			git checkout master;
+		else
+			git checkout development/stage	
+		fi;
+	git pull
+	./configure --prefix=/opt/bartlby-extensions
+	make
+	make install
+	
+fi;
+
 /opt/bartlby/etc/bartlby.startup start
 
-
-
+#cron */10 * * * * (/opt/pnp4nagios/libexec/process_perfdata.pl  -b "/opt/pnp4nagios//var/perfdata.log")
+tar cjvf /root/pnp4nagios.tar.bz2 /opt/pnp4nagios/
 tar cjvf /root/bartlby-core.tar.bz2 /opt/bartlby/
+tar cjvf /root/bartlby-extensions.tar.bz2 /opt/bartlby-extensions/
 tar cjvf /root/bartlby-agent.tar.bz2 /opt/bartlby-agent/
 tar cjvf /root/bartlby-ui.tar.bz2 /srv/www/htdocs/bartlby-ui/
 cp /usr/lib64/php5/extensions/bartlby.so /root/
