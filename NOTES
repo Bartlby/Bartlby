@@ -38,6 +38,8 @@ update deb host
 cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
 dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
 
+#remove old version debs
+
 
 #FINAL
 go to development/stage
