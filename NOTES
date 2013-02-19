@@ -1,0 +1,48 @@
+RELEASE
+get on master (agent,core,php,ui,plugins,extension)
+merge development/stage
+
+go to GIT/Bartlby/
+./make_release.sh
+
+
+mv .tgz to /root/RELEASE/
+
+go to core
+dch --newversion=1.4.6 #debian changelog
+git-buildpackage
+mv the .deb to htdocs/Bartlby/debs/binary
+
+go to agent
+dch --newversion=1.4.6 #debian changelog
+git-buildpackage
+mv the .deb to htdocs/Bartlby/debs/binary
+
+go to plugins
+./checkinstall.sh
+mv the .deb to htdocs/Bartlby/debs/binary
+
+go to ui
+./make_deb.sh
+mv the deb to htdocs/Bartlby/debs/binary
+
+get a vanilla amd64 debian iso
+clone php
+configure
+make
+./checkinstall
+scp .deb to htdocs/Bartlby/debs/binary
+
+update deb host
+
+cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
+
+
+#FINAL
+go to development/stage
+check for diffs
+commit debian changelog and "files" file
+
+push everthing back to github DONE :)
+
