@@ -46,5 +46,8 @@ go to development/stage
 check for diffs
 commit debian changelog and "files" file
 
+#create branch for each tag
+
+
 push everthing back to github DONE :)
 

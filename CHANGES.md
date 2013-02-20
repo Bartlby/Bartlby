@@ -1,3 +1,7 @@
+
+###########################
+# RELEASE 1.4.6 19.02.2013
+###########################
 	+ 19.02.2013 - added a new field (last_state_changed) - displays the time(unixtimestamp) of the last state change - ui/php/core
 ###########################
 # RELEASE 1.4.5 16.02.2013
