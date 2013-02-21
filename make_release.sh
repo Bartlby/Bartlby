@@ -3,52 +3,86 @@
 MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui bartlby-extensions";
 BS=/storage/SF.NET/BARTLBY/GIT/
 
-if [ "x$1" = "x" ];
-then
-	echo "specify version x.y.z";
-	exit 1;
-fi;
 
-
-
-VE=$1;
-
+MODS_SEL="";
 
 for x in $MODS; 
 do
 
-
-
 	echo -n "Release $x [y/n](y)?";
 	read stopit;
-	if [ "x$stopit" = "x" ];
+	if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 	then
+				MODS_SEL="${MODS_SEL} $x";
 				cd $BS/$x
 				git checkout master
 				git pull
 				#UPDATE VERSION 
 				echo -n "Bump Version of $x [y/n](y)?";
 				read stopit;
-				if [ "x$stopit" = "x" ];
+				if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 				then
-						perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
+						echo -n "Specify Version x.y.z (current version bellow):";
+						
 						if [ "$x" = "bartlby-core" ];
 						then
+							 grep AC_INIT configure.ac
+						fi;
+						
+						if [ "$x" = "bartlby-agent" ];
+						then
+							 grep AC_INIT configure.ac
+						fi;
+						
+						if [ "$x" = "bartlby-extensions" ];
+						then
+							 grep AC_INIT configure.ac
+						fi;
+						if [ "$x" = "bartlby-php" ];
+						then
+							 grep BARTLBY_VERSION php_bartlby.h
+						fi;
+						if [ "$x" = "bartlby-ui" ];
+						then
+							 grep BARTLBY_UI_VERSION bartlby-ui.class.php
+						fi;
+						
+						
+						read VE;
+						if [ "x$VE" = "x" ];
+						then
+							echo "EMPTY VERSION STOPPING";
+							continue;
+						fi;
+						
+						if [ "$x" = "bartlby-core" ];
+						then
+							perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
 							dch --newversion=$VE
 						fi;
 						if [ "$x" = "bartlby-agent" ];
 						then
+							perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
 							dch --newversion=$VE
 						fi;
-						git commit -m "Release $VE" -a;
-						git tag $VE
-						git branch -b release-$VE $VE
-						git push origin release-$VE
-						git checkout master
-						git push
-						git push --tags
-						
+						if [ "$x" = "bartlby-extensions" ];
+						then
+							perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
+							
+						fi;
+						if [ "$x" = "bartlby-php" ];
+						then
+							perl -pi -e "s/#define BARTLBY_VERSION \"(.*)\"/#define BARTLBY_VERSION \"$VE\"/g" php_bartlby.h  && grep BARTLBY_VERSION php_bartlby.h
+							
+						fi;
+						if [ "$x" = "bartlby-ui" ];
+						then
+							perl -pi -e "s/define\(\"BARTLBY_UI_VERSION\", \"2.2-(.*)\"\);/define\(\"BARTLBY_UI_VERSION\", \"2.2-$VE\"\);/g" bartlby-ui.class.php  && grep BARTLBY_UI_VERSION bartlby-ui.class.php
+							
+						fi;
+					
 				fi;
+				git checkout master
 				case $x in
 						bartlby-core)
 							#BUILD DEBIAN PACKAGE
@@ -71,30 +105,43 @@ do
 							mv bartlby-ui_${VE}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 				esac;
+				git commit -m "Release $VE" -a;
+				git tag $VE
+				git checkout  $VE -b release-$VE 
 				git checkout development/stage
+				git merge master
+				git push origin release-$VE
+				git push
+				git push --tags
+				
 				
 	else
 		echo "skipping $x";	
 	fi;
 	
-
-	
-
 done
 
 echo -n "Update Organization GIT account [y/n](y)?";
 read stopit;
-if [ "x$stopit" = "x" ];
+if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
 #update submodules to master~head
 	cd $BS/Bartlby/
 	./update_repository_with_latest_module_commits.sh
 fi;
 
-echo -n "Create all-in-one tgz [y/n](y)?";
+echo -n "Create all-in-one tgz (USING: $MODS_SEL) [y/n](y)?";
 read stopit;
-if [ "x$stopit" = "x" ];
+if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
+						echo -n "ALL IN ONE VERSION";
+						read VE;
+						if [ "x$VE" = "x" ];
+						then
+							echo "EMPTY VERSION STOPPING";
+							continue;
+						fi;
+
 	rm -vfr /tmp/bartlby-$VE
 	mkdir /tmp/bartlby-$VE
 	cd /tmp/bartlby-$VE
@@ -102,7 +149,7 @@ then
 
 
 
-	for x in $MODS;
+	for x in $MODS_SEL;
 	do
 	
 		cd /tmp/bartlby-$VE
@@ -125,7 +172,7 @@ fi;
 
 echo -n "Rescan Debian Packages [y/n](y)?";
 read stopit;
-if [ "x$stopit" = "x" ];
+if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
 	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
 	dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
