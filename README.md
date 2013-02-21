@@ -1,5 +1,5 @@
 Documentation: https://github.com/Bartlby/Bartlby/wiki/
-
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Spielverderber&url=http://github.com/Bartlby&title=Bartlby&language=&tags=github&category=software) 
 # Build Status
 Core: [![Build Status](https://travis-ci.org/Bartlby/bartlby-core.png?branch=master)](https://travis-ci.org/Bartlby/bartlby-core)
 
