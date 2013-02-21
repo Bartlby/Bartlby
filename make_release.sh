@@ -57,6 +57,8 @@ do
 						
 						if [ "$x" = "bartlby-core" ];
 						then
+						 	EXP=${VE//.}
+							perl -pi -e "s/#define EXPECTCORE (.*)/#define EXPECTCORE ${EXP}0000/g" include/bartlby.h && grep AC_INIT include/bartlby.h
 							perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
 							dch --newversion=$VE
 						fi;
