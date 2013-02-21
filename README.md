@@ -1,4 +1,3 @@
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Spielverderber&url=http://github.com/Bartlby&title=Bartlby&language=&tags=github&category=software) 
 
 Documentation: https://github.com/Bartlby/Bartlby/wiki/
 
