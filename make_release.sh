@@ -18,6 +18,7 @@ then
 	mkdir -p $BS;
 	cd $BS;
 	for $x in $MODS;
+	do
 		git clone git://github.com/Bartlby/$x.git	
 	done;
 fi;
