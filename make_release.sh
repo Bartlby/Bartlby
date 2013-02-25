@@ -132,22 +132,22 @@ do
 						bartlby-core)
 							#BUILD DEBIAN PACKAGE
 							git-buildpackage --git-ignore-new
-							mv ../bartlby-core_${VE}_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv ../bartlby-core_*_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-agent)
 							#BUILD DEBIAN PACKAGE
 							git-buildpackage --git-ignore-new
-							mv ../bartlby-agent_${VE}_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv ../bartlby-agent_*_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-plugins)
 							#BUILD DEBIAN PACKAGE
 							./checkinstall.sh
-							mv bartlby-plugins_${VE}-1_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv bartlby-plugins_*-1_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-ui)
 							#BUILD DEBIAN PACKAGE
 							./make_deb.sh
-							mv bartlby-ui_${VE}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv bartlby-ui_*.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 				esac;
 				echo -n "Commit and Tag release? [y/n](y) - only required for main arch";
