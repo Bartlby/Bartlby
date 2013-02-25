@@ -12,7 +12,7 @@ then
 	mkdir -p /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
 fi;
 
-	for $x in $MODS;
+	for x in $MODS;
 	do
 		if [ ! -d $BS/$x ];
 		then
