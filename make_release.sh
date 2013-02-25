@@ -24,6 +24,23 @@ then
 fi;
 
 
+type -a checkinstall
+EX=$?;
+
+if [ $EX = 1 ];
+then
+	apt-get install checkinstall
+fi;
+
+type -a git-buildpackage
+EX=$?;
+
+if [ $EX = 1 ];
+then
+	apt-get install git-buildpackage
+fi;
+
+
 MODS_SEL="";
 
 for x in $MODS; 
