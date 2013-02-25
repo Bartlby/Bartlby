@@ -126,16 +126,19 @@ do
 							mv bartlby-ui_${VE}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 				esac;
-				git commit -m "Release $VE" -a;
-				git tag $VE
-				git checkout  $VE -b release-$VE 
-				git checkout development/stage
-				git merge master
-				git push origin release-$VE
-				git push
-				git push --tags
-				
-				
+				echo -n "Commit and Tag release? [y/n](y) - only required for main arch";
+				read stopit;
+				if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
+				then
+					git commit -m "Release $VE" -a;
+					git tag $VE
+					git checkout  $VE -b release-$VE 
+					git checkout development/stage
+					git merge master
+					git push origin release-$VE
+					git push
+					git push --tags
+				fi;	
 	else
 		echo "skipping $x";	
 	fi;
