@@ -3,7 +3,7 @@
 MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui bartlby-extensions";
 BS=/storage/SF.NET/BARTLBY/GIT/
 
-
+ARCHTO=$(dpkg-architecture -qDEB_HOST_ARCH);
 
 
 if [ ! -d /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/ ];
@@ -38,7 +38,7 @@ if [ $EX = 1 ];
 then
 	apt-get install git-buildpackage
 fi;
-#apt-get install libmysqlclient-dev mysql-server libsnmp-dev libssh-dev rrdtool libssl-dev libfile-slurp-perl git
+#apt-get install libmysqlclient-dev mysql-server libsnmp-dev libssh-dev rrdtool libssl-dev libfile-slurp-perl git autoconf libtool
 
 
 MODS_SEL="";
@@ -132,17 +132,17 @@ do
 						bartlby-core)
 							#BUILD DEBIAN PACKAGE
 							git-buildpackage --git-ignore-new
-							mv ../bartlby-core_${VE}_amd64.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv ../bartlby-core_${VE}_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-agent)
 							#BUILD DEBIAN PACKAGE
 							git-buildpackage --git-ignore-new
-							mv ../bartlby-agent_${VE}_amd64.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv ../bartlby-agent_${VE}_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-plugins)
 							#BUILD DEBIAN PACKAGE
 							./checkinstall.sh
-							mv bartlby-plugins_${VE}-1_amd64.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
+							mv bartlby-plugins_${VE}-1_${ARCHTO}.deb /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary
 						;;
 						bartlby-ui)
 							#BUILD DEBIAN PACKAGE
