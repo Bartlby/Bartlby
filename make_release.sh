@@ -4,6 +4,25 @@ MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bart
 BS=/storage/SF.NET/BARTLBY/GIT/
 
 
+
+
+if [ ! -d /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/ ];
+then
+	echo "making DEB storage";
+	mkdir -p /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+fi;
+
+if [ ! -d $BS ];
+then
+	echo "Making GIT storage";
+	mkdir -p $BS;
+	cd $BS;
+	for $x in $MODS;
+		git clone git://github.com/Bartlby/$x.git	
+	done;
+fi;
+
+
 MODS_SEL="";
 
 for x in $MODS; 
