@@ -38,7 +38,7 @@ if [ $EX = 1 ];
 then
 	apt-get install git-buildpackage
 fi;
-#apt-get install libmysqlclient-dev mysql-server libsnmp-dev libssh-dev rrdtool libssl-dev libfile-slurp-perl git autoconf libtool
+#apt-get install libmysqlclient-dev mysql-server libsnmp-dev libssh-dev rrdtool libssl-dev libfile-slurp-perl git autoconf libtool php5-dev
 
 
 MODS_SEL="";
@@ -224,6 +224,7 @@ if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
 	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
 	dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
+	dpkg-scanpackages binary-386 /dev/null | gzip -9c > binary-386/Packages.gz
 
 fi;
 
@@ -232,6 +233,12 @@ read stopit;
 if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
 	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
-	scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
+	if [ "$ARCHTO" = "i386" ];
+	then
+		scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary-386/
+	else
+		scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
+	fi;
+	
 
 fi;
