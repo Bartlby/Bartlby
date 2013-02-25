@@ -121,6 +121,12 @@ do
 						fi;
 					
 				fi;
+				
+				if [ ! -f "configure" ];
+				then
+					./autogen.sh
+				fi;
+				
 				git checkout master
 				case $x in
 						bartlby-core)
