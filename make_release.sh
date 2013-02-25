@@ -6,10 +6,10 @@ BS=/storage/SF.NET/BARTLBY/GIT/
 ARCHTO=$(dpkg-architecture -qDEB_HOST_ARCH);
 
 
-if [ ! -d /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/ ];
+if [ ! -d /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/ ];
 then
 	echo "making DEB storage";
-	mkdir -p /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+	mkdir -p /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
 fi;
 
 	for x in $MODS;
@@ -231,7 +231,7 @@ echo -n "SCP DEBS to upstream [y/n](y)?";
 read stopit;
 if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
 then
-	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
-	scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
+	scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/binary/
 
 fi;
