@@ -199,3 +199,12 @@ then
 	dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
 
 fi;
+
+echo -n "SCP DEBS to upstream [y/n](y)?";
+read stopit;
+if [ "x$stopit" = "x" ] ||  [ "x$stopit" = "xy" ] ||  [ "x$stopit" = "xY" ];
+then
+	cd /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+	scp *.deb root@januschka.com:/var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
+
+fi;
