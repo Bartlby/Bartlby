@@ -12,16 +12,15 @@ then
 	mkdir -p /var/www/htdocs/bartlby.januschka.com/Bartlby/debs/
 fi;
 
-if [ ! -d $BS ];
-then
-	echo "Making GIT storage";
-	mkdir -p $BS;
-	cd $BS;
 	for $x in $MODS;
 	do
+		if [ ! -d $BS/$x ];
+		then
+		mkdir -p $BS;
+		cd $BS;
 		git clone git://github.com/Bartlby/$x.git	
+		fi;
 	done;
-fi;
 
 
 type -a checkinstall
@@ -39,6 +38,7 @@ if [ $EX = 1 ];
 then
 	apt-get install git-buildpackage
 fi;
+#apt-get install libmysqlclient-dev mysql-server libsnmp-dev libssh-dev rrdtool libssl-dev libfile-slurp-perl git
 
 
 MODS_SEL="";
