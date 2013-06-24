@@ -1,3 +1,9 @@
+	+ 27.02.2013 - UI added Dashboards extensions
+	+ 25.02.2013 - LONG overflow protection, and atoi changes to atol, RRD bartlby_if shows total throughput
+###########################
+# RELEASE 1.4.9 22.02.2013
+###########################
+
 ###########################
 # RELEASE 1.4.7 21.02.2013
 ###########################

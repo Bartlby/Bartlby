@@ -70,7 +70,10 @@ do
 						then
 							 grep AC_INIT configure.ac
 						fi;
-						
+						if [ "$x" = "bartlby-plugins" ];
+						then
+							 grep AC_INIT configure.ac
+						fi;
 						if [ "$x" = "bartlby-extensions" ];
 						then
 							 grep AC_INIT configure.ac
@@ -117,6 +120,11 @@ do
 						if [ "$x" = "bartlby-ui" ];
 						then
 							perl -pi -e "s/define\(\"BARTLBY_UI_VERSION\", \"2.2-(.*)\"\);/define\(\"BARTLBY_UI_VERSION\", \"2.2-$VE\"\);/g" bartlby-ui.class.php  && grep BARTLBY_UI_VERSION bartlby-ui.class.php
+							
+						fi;
+						if [ "$x" = "bartlby-plugins" ];
+						then
+							perl -pi -e "s/AC_INIT\((.*),(.*),(.*)\)/AC_INIT\(\$1,$VE,\$3\)/g" configure.ac && grep AC_INIT configure.ac
 							
 						fi;
 					
