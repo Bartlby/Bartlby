@@ -1,3 +1,17 @@
+###########################
+# RELEASE 1.5.0 24.06.2013
+###########################
+	# SUPPORT FOR DEBIAN 7
+	# packages for debian 6 wont be updated anymore
+	core: 
+	+ retain count long overflow protection
+	+ bartlby_if network perfhandler fix
+	+ output service_text on shm tool
+	+ php:
+		php 5.4 support!! ported the extension
+	+ ui:
+		support for php 5.4
+	+ db field clean up
 	+ 27.02.2013 - UI added Dashboards extensions
 	+ 25.02.2013 - LONG overflow protection, and atoi changes to atol, RRD bartlby_if shows total throughput
 ###########################
