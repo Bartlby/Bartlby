@@ -1,3 +1,15 @@
+	+ UI:
+		service list uses ajax to load elements, regex search to filter and much faster loading
+	+ php/ui
+		support bulk force/check_enable/check_disable/notify_enable/notify_disable
+	+ php
+		* reworked the FE functions to accept an array as object configuration instead of using 27+ function parameters
+		  this will help to be  backward compatible and will speed up further development
+	+ core - mysql-lib
+		* simpler selects for services - enables faster development 
+			orphaned services are detected and can be auto deleted if config "autodelete_orphaned_services=true" is set
+	+ ui
+		adapted to the PHP FE functions
 ###########################
 # RELEASE 1.5.0 24.06.2013
 ###########################
