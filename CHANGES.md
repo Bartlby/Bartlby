@@ -1,3 +1,64 @@
+	+ core/portier
+		* support for notification upstreaming (when running in replicated/remote mode)
+	+ core/php/ui
+		added support for remote managed/replicated instances
+		extension: "SiteManager"
+	+ core/notifications
+		* added support for aggregation of notification + notification log in UI
+	+ core/agent
+		multiline plugin output support for active, agentv2, ssh, local check types (only passives are not supported right now);
+	+ core
+		implement another sched_mode (SCHED_MODE_WORKER) - wich eleminates the need of a fork() on every svc-check, N workers will be preforked - and execute the checks by loadbalancing
+	+ php/ui
+		fixed limitations on large setups - UI/php should now support up to 100k+ services/servers/groups etc
+	+ php
+		reworked the module to use a shared resource instead of every function having to open shm/lib
+	+ ui
+		rollup for resource change in php module
+	+ ui
+		"all failures" now excludes INFO state services (messed up the view - and INFO is not a failure)
+		quick look now uses datatables for prettier output
+		nice extensions overview
+		nice statistic
+		nice event queue
+	+ php
+		added bartlby_get_core_extension_info() FE function to retrieve core extension info
+	+ core/php
+		set GROUP_MEMBER_STR_LENGTH and MAX_GROUP_MEMBERS constant for defining group size
+	+ UI
+		removed the alive indicator old search -  replaced with ajax chosen
+		perf data graphs are now displayed in tabs
+		groupstr searcher uses ajax chosen
+		global support for getParam "json=1" the whole $layout will be printed as json serialized string
+		added auto_refshable_objects 
+			can be registered by every extension and if the page (e.g.: overview) enables auto refresh it will be called sample:_
+				js (for example in your extension):
+				btl_add_refreshable_object(function(data) {
+						json_value = btl_get_refreshable_value(data, "my_stored_key");
+						alert(json_value);
+				});
+				
+				php code (for example in your extension):
+				$layout->setRefreshableVariable("my_stored_key", "value");
+
+			  and your JS function will be called every 5 secs. if the Auto-Refresh checkbox is enabled and the browser/tab has focus
+				
+	+ UI
+		service_detail: added gauglets (load,swap sample added)
+	+ UI
+		replaced long optionlists with ajax one (ajax-chosen)
+	+ overall
+		added little helper script "rorder_intervall.php" to span checks - so if you have 100 checks wich all have 60 sec. intervall
+		this script will span them so that e.g. 5 are at 61, 5 at 62 etc...
+	+ php
+		new FE function bartlby_service_set_interval($CFG, $SHM_PLACE, $INTERVALL_IN_SECONDS, $WRITE_TO_DB);
+		for setting new intervall
+	+ core:
+		autodelete_orphaned_services is by default now "true" if you expierience orphaned services hit reload 2 times :)
+	+ php
+		support "checks_performed", "check_performend_time"
+	+ ui
+		show performed checks and checks/s
 	+ UI:
 		service list uses ajax to load elements, regex search to filter and much faster loading
 	+ php/ui

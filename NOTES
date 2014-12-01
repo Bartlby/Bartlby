@@ -18,6 +18,12 @@ dch --newversion=1.4.6 #debian changelog
 git-buildpackage
 mv the .deb to htdocs/Bartlby/debs/binary
 
+go to ruby
+update bartlby.platformdependent.gemscpec.rb
+gem build bartlby.platformdependent.gemspec.rb
+
+
+
 go to plugins
 ./checkinstall.sh
 mv the .deb to htdocs/Bartlby/debs/binary
