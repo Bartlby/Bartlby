@@ -2,9 +2,14 @@
 Documentation: https://github.com/Bartlby/Bartlby/wiki/
 
 # Build Status
+## Travis:
 Core: [![Build Status](https://travis-ci.org/Bartlby/bartlby-core.png?branch=master)](https://travis-ci.org/Bartlby/bartlby-core)
-      [![Coverity Status](https://scan.coverity.com/projects/2909/badge.svg)](https://scan.coverity.com/projects/2909)
+## Coverity  
+Core: [![Coverity Status](https://scan.coverity.com/projects/2909/badge.svg)](https://scan.coverity.com/projects/2909)
 
+## Drone.io
+Core: [![Build Status](https://drone.io/github.com/Bartlby/bartlby-core/status.png)](https://drone.io/github.com/Bartlby/bartlby-core/latest)
+      
 # Contribute
 Fork the submodule you want make your changes and do a pull request on the submodules - repo!
 
