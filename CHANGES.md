@@ -1,3 +1,37 @@
+#########################
+# Release 1.6.0
+#########################
+	+ UI:
+		* redesign
+		* drop old basic_auth stuff
+		* passwords are sha1 now
+	+ core:
+		* config overrid with env vars
+		* upgrade script for old dat files (ui)
+		* LSB-compliant RC script
+		* re-worked build process (faster cleaner etc..)
+		* portier rewritten (now talks json)
+		* added a bunch of service/server options
+		* exec_plan on server objects
+		* svc prio
+		* REST API (see api/sdk/..)
+		* report filter on HARD/soft state
+		* JSON check type
+		* TRAP check type
+		* webhooks
+		* TRAPS
+		* mysql sql injection prevention
+	+ php:
+		* object audit
+		* bartlby_get_object_by_id($RES, TYPE, ID); - get shm object BY id - to avoid usind findSHMPlace stuff.		
+	+ all:
+		* travis-ci integration
+		* coverityscan integration
+		* docker support
+		* php7 (branch in bartlby-php) support
+		* unit tests (bartlby-core, bartlby-php)
+	+ ui:
+		* state history		
 	+ core/portier
 		* support for notification upstreaming (when running in replicated/remote mode)
 	+ core/php/ui
