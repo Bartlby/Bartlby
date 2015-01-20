@@ -1,4 +1,5 @@
 #!/bin/bash
+export DEB_BUILD_OPTIONS="nocheck"
 
 MODS="bartlby-core bartlby-agent bartlby-php bartlby-chrome bartlby-plugins bartlby-ui bartlby-extensions";
 BS=/storage/SF.NET/BARTLBY/GIT/
