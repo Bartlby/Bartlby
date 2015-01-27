@@ -1,9 +1,11 @@
 
 Documentation: https://github.com/Bartlby/Bartlby/wiki/
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Bartlby/Bartlby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # Build Status
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Bartlby/Bartlby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 | Project        | Travis  | Drone.io  | Coverity  |
 | ------------- |:-------------:|:-------------:|:-------------:|
 | bartlby-core      | [![Build Status](https://travis-ci.org/Bartlby/bartlby-core.png?branch=development/stage)](https://travis-ci.org/Bartlby/bartlby-core) | [![Build Status](https://drone.io/github.com/Bartlby/bartlby-core/status.png)](https://drone.io/github.com/Bartlby/bartlby-core/latest) | [![Coverity Status](https://scan.coverity.com/projects/2909/badge.svg)](https://scan.coverity.com/projects/2909) |
